@@ -1,13 +1,7 @@
-const mongo = require('mongodb');
-const MongoClient = mongo.MongoClient;
-const mongoURL = 'mongodb://localhost:27017';
+const mongoConnect = require('../mongo');
 var db;
+mongoConnect((database) => (db = database));
 const collection_name = 'userList';
-MongoClient.connect(mongoURL, (err, connection) => {
-	if (err) throw err;
-	db = connection.db('user-management');
-	console.log('Database connected');
-});
 
 exports.getUserList = (req, res) => {
 	db.collection(collection_name)
