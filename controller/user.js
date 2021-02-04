@@ -31,5 +31,44 @@ exports.addUser = (req, res) => {
 		if (err) res.send(err);
 		res.send('User added');
 	});
-	// res.send(data);
+};
+
+exports.ActivateUser = (req, res) => {
+	let Id = req.body._id;
+	db.collection(collection_name).update(
+		{ _id: mongo.ObjectID(Id) },
+		{
+			$set: {
+				isActive: true,
+			},
+		},
+		(err, _) => {
+			if (err) res.send(err);
+			res.send('User activated');
+		},
+	);
+};
+
+exports.DeactivateUser = (req, res) => {
+	let Id = mongo.ObjectID(req.body._id);
+	db.collection(collection_name).update(
+		{ _id: Id },
+		{
+			$set: {
+				isActive: false,
+			},
+		},
+		(err, _) => {
+			if (err) res.send(err);
+			res.send('User activated');
+		},
+	);
+};
+
+exports.delete = (req, res) => {
+	let Id = mongo.ObjectID(req.body._id);
+	db.collection(collection_name).remove({ _id: Id }, (err, _) => {
+		if (err) res.send(err);
+		res.send('User deleted');
+	});
 };
