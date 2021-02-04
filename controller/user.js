@@ -10,10 +10,12 @@ MongoClient.connect(mongoURL, (err, connection) => {
 });
 
 exports.getUserList = (req, res) => {
-	db.collection(collection_name).find({ isActive: true })((err, result) => {
-		if (err) throw err;
-		res.send(result);
-	});
+	db.collection(collection_name)
+		.find({ isActive: true })
+		.toArray((err, result) => {
+			if (err) throw err;
+			res.send(result);
+		});
 };
 
 exports.addUser = (req, res) => {
@@ -29,4 +31,5 @@ exports.addUser = (req, res) => {
 		if (err) res.send(err);
 		res.send('User added');
 	});
+	// res.send(data);
 };
