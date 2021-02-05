@@ -1,3 +1,4 @@
+const mongo = require('mongodb');
 const mongoConnect = require('../mongo');
 var db;
 mongoConnect((database) => (db = database));

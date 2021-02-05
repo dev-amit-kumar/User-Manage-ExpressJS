@@ -1,16 +1,26 @@
+import axios from 'axios';
+import { base_url } from '../config';
+
 const EditUser = () => {
+	const EditUserHandler = (e) => {
+		e.preventDefault();
+		axios
+			.put(`${base_url}editUser`)
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+	};
 	return (
 		<div
 			className="modal fade"
-			id="exampleModal"
+			id="editUser"
 			tabIndex="-1"
-			aria-labelledby="exampleModalLabel"
+			aria-labelledby="editUserLabel"
 			aria-hidden="true"
 		>
 			<div className="modal-dialog">
 				<div className="modal-content">
 					<div className="modal-header">
-						<h5 className="modal-title" id="exampleModalLabel">
+						<h5 className="modal-title" id="editUserLabel">
 							New message
 						</h5>
 						<button
@@ -23,7 +33,7 @@ const EditUser = () => {
 						</button>
 					</div>
 					<div className="modal-body">
-						<form>
+						<form onSubmit={EditUserHandler}>
 							<div className="form-group">
 								<label
 									htmlFor="recipient-name"
@@ -49,6 +59,9 @@ const EditUser = () => {
 									id="message-text"
 								></textarea>
 							</div>
+							<button type="submit" className="btn btn-primary">
+								Send message
+							</button>
 						</form>
 					</div>
 					<div className="modal-footer">
@@ -58,9 +71,6 @@ const EditUser = () => {
 							data-dismiss="modal"
 						>
 							Close
-						</button>
-						<button type="button" className="btn btn-primary">
-							Send message
 						</button>
 					</div>
 				</div>

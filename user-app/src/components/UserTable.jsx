@@ -1,3 +1,7 @@
+import EditUser from './EditUser';
+import DeleteUser from './DeleteUser';
+import DeactivateUser from './DeactivateUser';
+import ActivateUser from './ActivateUser';
 const UserTable = (props) => {
 	return (
 		<table className="table table-striped table-bordered">
@@ -27,23 +31,29 @@ const UserTable = (props) => {
 								<td>{user.role}</td>
 								<td className=" text-center">
 									{user.isActive ? (
-										<button
-											type="button"
-											className="btn btn-primary"
-											data-toggle="modal"
-											data-target="#deactivateUser"
-										>
-											Deactivate
-										</button>
+										<>
+											<button
+												type="button"
+												className="btn btn-primary"
+												data-toggle="modal"
+												data-target={`#deactivateUser${user._id}`}
+											>
+												Deactivate
+											</button>
+											<DeactivateUser _id={user._id} />
+										</>
 									) : (
-										<button
-											type="button"
-											className="btn btn-primary"
-											data-toggle="modal"
-											data-target="#activateUser"
-										>
-											Activate
-										</button>
+										<>
+											<button
+												type="button"
+												className="btn btn-primary"
+												data-toggle="modal"
+												data-target={`#activateUser${user._id}`}
+											>
+												Activate
+											</button>
+											<ActivateUser _id={user._id} />
+										</>
 									)}
 								</td>
 								<td className=" text-center">
@@ -51,21 +61,23 @@ const UserTable = (props) => {
 										type="button"
 										className="btn btn-warning"
 										data-toggle="modal"
-										data-target="#exampleModal"
+										data-target={`#editUser${user._id}`}
 										data-whatever="@mdo"
 									>
 										Edit
 									</button>
+									<EditUser _id={user._id} />
 								</td>
 								<td className=" text-center">
 									<button
 										type="button"
 										className="btn btn-danger"
 										data-toggle="modal"
-										data-target="#deleteUser"
+										data-target={`#deleteUser${user._id}`}
 									>
 										Delete
 									</button>
+									<DeleteUser _id={user._id} />
 								</td>
 							</tr>
 						);

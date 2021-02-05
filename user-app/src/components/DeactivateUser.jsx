@@ -1,8 +1,17 @@
-const DeactivateUser = () => {
+import axios from 'axios';
+import { base_url } from '../config';
+
+const DeactivateUser = (props) => {
+	const deactivateUserHandler = () => {
+		axios
+			.delete(`${base_url}deActivateUser/${props._id}`)
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+	};
 	return (
 		<div
 			className="modal fade"
-			id="deactivateUser"
+			id={`deactivateUser${props._id}`}
 			tabIndex="-1"
 			aria-labelledby="deactivateUserLabel"
 			aria-hidden="true"
@@ -28,6 +37,7 @@ const DeactivateUser = () => {
 							<button
 								type="button"
 								className="btn btn-success pl-4 pr-4"
+								onClick={deactivateUserHandler}
 							>
 								Yes
 							</button>

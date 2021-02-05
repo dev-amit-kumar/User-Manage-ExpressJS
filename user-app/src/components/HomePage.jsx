@@ -1,12 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import UserTable from './UserTable';
-import EditUser from './EditUser';
-import DeleteUser from './DeleteUser';
-import DeactivateUser from './DeactivateUser';
-import ActivateUser from './ActivateUser';
-
-const base_url = 'http://localhost:7000/';
+import { base_url } from '../config';
 class HomePage extends React.Component {
 	constructor() {
 		super();
@@ -27,10 +22,6 @@ class HomePage extends React.Component {
 				<div className="table-responsive">
 					<UserTable userList={this.state.userList} />
 				</div>
-				<EditUser />
-				<DeleteUser />
-				<DeactivateUser />
-				<ActivateUser />
 			</div>
 		);
 	}
