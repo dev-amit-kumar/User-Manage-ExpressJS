@@ -6,7 +6,7 @@ const collection_name = 'userList';
 
 exports.getUserList = (req, res) => {
 	db.collection(collection_name)
-		.find({ isActive: true })
+		.find()
 		.toArray((err, result) => {
 			if (err) throw err;
 			res.send(result);

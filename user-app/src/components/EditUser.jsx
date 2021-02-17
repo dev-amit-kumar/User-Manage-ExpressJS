@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { base_url } from '../config';
 
-const EditUser = () => {
+const EditUser = (props) => {
 	const EditUserHandler = (e) => {
 		e.preventDefault();
 		axios
@@ -12,7 +12,7 @@ const EditUser = () => {
 	return (
 		<div
 			className="modal fade"
-			id="editUser"
+			id={`editUser${props.data._id}`}
 			tabIndex="-1"
 			aria-labelledby="editUserLabel"
 			aria-hidden="true"

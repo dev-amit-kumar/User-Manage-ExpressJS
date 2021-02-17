@@ -34,7 +34,7 @@ const UserTable = (props) => {
 										<>
 											<button
 												type="button"
-												className="btn btn-primary"
+												className="btn btn-secondary"
 												data-toggle="modal"
 												data-target={`#deactivateUser${user._id}`}
 											>
@@ -46,7 +46,7 @@ const UserTable = (props) => {
 										<>
 											<button
 												type="button"
-												className="btn btn-primary"
+												className="btn btn-info"
 												data-toggle="modal"
 												data-target={`#activateUser${user._id}`}
 											>
@@ -66,7 +66,7 @@ const UserTable = (props) => {
 									>
 										Edit
 									</button>
-									<EditUser _id={user._id} />
+									<EditUser data={user} />
 								</td>
 								<td className=" text-center">
 									<button

@@ -4,7 +4,7 @@ import { base_url } from '../config';
 const DeactivateUser = (props) => {
 	const deactivateUserHandler = () => {
 		axios
-			.delete(`${base_url}deActivateUser/${props._id}`)
+			.put(`${base_url}deActivateUser/${props._id}`)
 			.then((res) => console.log(res))
 			.catch((err) => console.log(err));
 	};
